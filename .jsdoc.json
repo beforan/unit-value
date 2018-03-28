@@ -1,0 +1,47 @@
+{
+  "source": {
+    "include": ["./src"]
+  },
+  "plugins": [
+    "node_modules/jsdoc-export-default-interop/dist/index",
+    "node_modules/jsdoc-typeof-plugin",
+    "plugins/markdown"
+  ],
+  "opts": {
+    "template": "./node_modules/@pixi/jsdoc-template",
+    "encoding": "utf8",
+    "destination": "./docs/",
+    "recurse": true,
+    "readme": "./README.md"
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "default": {
+      "outputSourceFiles": true
+    },
+    "applicationName": "DECSYS.js",
+    "footer": "",
+    "copyright": "",
+    "disqus": "",
+    "googleAnalytics": "",
+    "openGraph": {
+      "title": "",
+      "type": "website",
+      "image": "",
+      "site_name": "",
+      "url": ""
+    },
+    "meta": {
+      "title": "DECSYS API Documentation",
+      "description": "Documentation for DECSYS.js library",
+      "keyword":
+        "docs, documentation, decsys, decsys.js, renderer, html5, javascript, jsdoc"
+    },
+    "linenums": true
+  },
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": false
+  }
+}

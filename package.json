@@ -10,6 +10,7 @@
     "clean:dist": "rimraf dist && mkdir dist",
     "clean": "npm run clean:lib && npm run clean:dist",
     "lint": "eslint ./src",
+    "docs": "jsdoc -c .jsdoc.json -R README.md",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,9 +24,13 @@
   },
   "homepage": "https://github.com/beforan/unitvalue#readme",
   "devDependencies": {
+    "@pixi/jsdoc-template": "^2.4.0",
     "babel-eslint": "^8.2.2",
     "eslint": "^4.19.1",
     "husky": "^0.14.3",
+    "jsdoc": "^3.5.5",
+    "jsdoc-export-default-interop": "^0.3.1",
+    "jsdoc-typeof-plugin": "^1.0.0",
     "prettier": "^1.11.1",
     "pretty-quick": "^1.4.1",
     "rimraf": "^2.6.2"
