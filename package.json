@@ -17,7 +17,7 @@
     "predocs": "npm run clean:docs",
     "docs": "jsdoc -c .jsdoc.json -R README.md",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postversion": "npm run clean && npm run lib"
+    "postversion": "npm run lib"
   },
   "babel": {
     "presets": ["@babel/preset-env"]

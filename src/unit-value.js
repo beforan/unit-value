@@ -196,7 +196,7 @@ export default class UnitValue {
         "The string passed doesn't look like <value><units> e.g. 10px"
       );
 
-    return new UnitValue(matches[1], matches[2]);
+    return new UnitValue(parseFloat(matches[1]), matches[2]);
   }
 
   /**
