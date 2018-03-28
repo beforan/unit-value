@@ -8,7 +8,7 @@ import * as Utils from "./utils";
  * @private
  *
  * @param {number|Number|string|String|UnitValue} v1 The first value
- * @param {number|Number|string|String|UnitValue} v1 The second value
+ * @param {number|Number|string|String|UnitValue} v2 The second value
  * @param {string|String} [u] Units.
  *
  * Units are required if none of the values have units associated with them.
@@ -40,7 +40,7 @@ const getValuesAndUnits = (v1, v2, u) => {
       break;
     case 1:
       const [i] = retry;
-      values[i] = UnitValue.parse(v[i], values[toggle(i)].units);
+      values[i] = UnitValue.parse(v[i], values[Utils.toggle(i)].units);
       break;
     default:
       throw new UnitsError(
@@ -65,6 +65,9 @@ const getValuesAndUnits = (v1, v2, u) => {
  * A class representing a numeric value with associated units.
  *
  * Includes static helpers for maths and parsing strings of values with units.
+ *
+ * Note that the math functions (`add`, `subtract`, `divide`, `multiply`) have
+ * both static and instance versions for flexibility.
  *
  * @class UnitValue
  *
@@ -221,46 +224,214 @@ export default class UnitValue {
   // including static versions to avoid unnecesasry manual instantiation of UnitValues
 
   /**
-   * Adds the value `v` to the value of this {}
-   * @param {*} v
-   * @param {*} units
+   * Adds the value `v` to the value of this {@link UnitValue},
+   * returning a new {@link UnitValue}.
+   *
+   * Units can be specified for the output {@link UnitValue}.
+   * @param {number|Number|string|String|UnitValue} v The value to add.
+   * @param {string} [units] The units to use on the output {@link UnitValue}
+   * @returns {UnitValue} A new {@link UnitValue}.
+   *
+   * @example <caption>
+   * Add the values of two {@link UnitValue}s with different units specifying the units to use
+   * </caption>
+   * const uv1 = new UnitValue(2, "px");
+   * const uv2 = new UnitValue(0.5, "em");
+   * const sum = uv1.add(uv2, "rem"); // sum.toString() = "2.5rem"
+   * // NOTE no conversion takes place, we are just doing math with the values and then appending a unit.
    */
   add(v, units) {
     return UnitValue.add(this, v, units);
   }
+  /**
+   * Adds the values of `v1` and `v2`,
+   * returning a new {@link UnitValue}.
+   *
+   * Units can be specified for the output {@link UnitValue},
+   * or they will be inferred if possible from the source values
+   *
+   * @param {number|Number|string|String|UnitValue} v1 The first value to add.
+   * @param {number|Number|string|String|UnitValue} v2 The second value to add.
+   * @param {string} [units] The units to use on the output {@link UnitValue}.
+   *
+   * Units are required if none of the values have units associated with them.
+   *
+   * If the values already have units and units are additionally specified,
+   * the specified units will override those of the original values.
+   * @returns {UnitValue} A new {@link UnitValue}.
+   *
+   * @example <caption>
+   * Add the values of two strings with different units specifying the units to use
+   * </caption>
+   * const sum = UnitValue.add("2px", "0.5em", "rem"); // sum.toString() = "2.5rem"
+   * // NOTE no conversion takes place, we are just doing math with the values and then appending a unit.
+   */
   static add(v1, v2, units) {
     const { value1, value2, units: u } = getValuesAndUnits(v1, v2, units);
     return new UnitValue(value1 + value2, u);
   }
 
+  /**
+   * Subtracts the value `v` from the value of this {@link UnitValue},
+   * returning a new {@link UnitValue}.
+   *
+   * Units can be specified for the output {@link UnitValue}.
+   * @param {number|Number|string|String|UnitValue} v The value to subtract.
+   * @param {string} [units] The units to use on the output {@link UnitValue}
+   * @returns {UnitValue} A new {@link UnitValue}.
+   *
+   * @example <caption>Find the difference between two {@link UnitValue}s with matching units</caption>
+   * const uv1 = new UnitValue(10, "px");
+   * const uv2 = new UnitValue(2, "px");
+   * const diff = uv1.subtract(uv2); // diff.toString() = "8px"
+   */
   subtract(v, units) {
     return UnitValue.subtract(this, v, units);
   }
+
+  /**
+   * Subtracts the value of `v2` from that of `v1`,
+   * returning a new {@link UnitValue}.
+   *
+   * Units can be specified for the output {@link UnitValue},
+   * or they will be inferred if possible from the source values
+   *
+   * @param {number|Number|string|String|UnitValue} v1 The value to subtract from.
+   * @param {number|Number|string|String|UnitValue} v2 The value to subtract.
+   * @param {string} [units] The units to use on the output {@link UnitValue}.
+   *
+   * Units are required if none of the values have units associated with them.
+   *
+   * If the values already have units and units are additionally specified,
+   * the specified units will override those of the original values.
+   * @returns {UnitValue} A new {@link UnitValue}.
+   *
+   * @example <caption>
+   * Find the difference between a string and a {@link UnitValue} with matching units
+   * </caption>
+   * const uv = new UnitValue(2, "px");
+   * const diff = UnitValue.subtract("10px", uv); // diff.toString() = "8px"
+   */
   static subtract(v1, v2, units) {
     const { value1, value2, units: u } = getValuesAndUnits(v1, v2, units);
     return new UnitValue(value1 - value2, u);
   }
 
+  /**
+   * Divides the value of this {@link UnitValue} by the value `v`,
+   * returning a new {@link UnitValue}.
+   *
+   * Units can be specified for the output {@link UnitValue}.
+   * @param {number|Number|string|String|UnitValue} v The value to divide by.
+   * @param {string} [units] The units to use on the output {@link UnitValue}
+   * @returns {UnitValue} A new {@link UnitValue}.
+   *
+   * @example <caption>Converting milliseconds to seconds with overriding units and a unitless divisor</caption>
+   * const ms = new UnitValue(1000, "ms");
+   * const s = ms.divide(1000, "s");
+   */
   divide(v, units) {
     return UnitValue.divide(this, v, units);
   }
+
+  /**
+   * Divides the value of `v1` by that of `v2`,
+   * returning a new {@link UnitValue}.
+   *
+   * Units can be specified for the output {@link UnitValue},
+   * or they will be inferred if possible from the source values
+   *
+   * @param {number|Number|string|String|UnitValue} v1 The value to be divided.
+   * @param {number|Number|string|String|UnitValue} v2 The value to divide by.
+   * @param {string} [units] The units to use on the output {@link UnitValue}.
+   *
+   * Units are required if none of the values have units associated with them.
+   *
+   * If the values already have units and units are additionally specified,
+   * the specified units will override those of the original values.
+   * @returns {UnitValue} A new {@link UnitValue}.
+   *
+   * @example <caption>
+   * Divide a unitless number value by a {@link UnitValue} and infer the units from the second value.
+   * </caption>
+   * const uv = new UnitValue(2, "px");
+   * const result = UnitValue.divide(10, uv); // result.toString() = "5px"
+   */
   static divide(v1, v2, units) {
     const { value1, value2, units: u } = getValuesAndUnits(v1, v2, units);
     return new UnitValue(value1 / value2, u);
   }
 
+  /**
+   * Multiplies the value of this {@link UnitValue} by the value `v`,
+   * returning a new {@link UnitValue}.
+   *
+   * Units can be specified for the output {@link UnitValue}.
+   * @param {number|Number|string|String|UnitValue} v The value to multiply by.
+   * @param {string} [units] The units to use on the output {@link UnitValue}
+   * @returns {UnitValue} A new {@link UnitValue}.
+   *
+   * @example <caption>Converting seconds to milliseconds with overriding units and a unitless multiplier</caption>
+   * const s = new UnitValue(1, "s");
+   * const ms = s.multiply(1000, "ms");
+   */
   multiply(v, units) {
     return UnitValue.multiply(this, v, units);
   }
+
+  /**
+   * Multiply the values of `v1` and `v2` together,
+   * returning a new {@link UnitValue}.
+   *
+   * Units can be specified for the output {@link UnitValue},
+   * or they will be inferred if possible from the source values
+   *
+   * @param {number|Number|string|String|UnitValue} v1 The first value to multiply.
+   * @param {number|Number|string|String|UnitValue} v2 The second value to multiply.
+   * @param {string} [units] The units to use on the output {@link UnitValue}.
+   *
+   * Units are required if none of the values have units associated with them.
+   *
+   * If the values already have units and units are additionally specified,
+   * the specified units will override those of the original values.
+   * @returns {UnitValue} A new {@link UnitValue}.
+   *
+   * @example <caption>
+   * Multiply a unitless number value with a unitless string value and specify the units for the output.
+   * </caption>
+   * const result = UnitValue.multiply(10, "5", "ml"); // result.toString() = "50ml"
+   */
   static multiply(v1, v2, units) {
     const { value1, value2, units: u } = getValuesAndUnits(v1, v2, units);
     return new UnitValue(value1 * value2, u);
   }
 
+  /**
+   * Returns a string representation of the {@link UnitValue}
+   * in the format `<number><value>`
+   *
+   * @returns {string} The string representation of the {@link UnitValue}.
+   *
+   * @example
+   * const uv = new UnitValue(2, "rem");
+   * // uv.toString() = "2rem"
+   */
   toString() {
     return `${this.value}${this.units}`;
   }
 
+  /**
+   * Returns the {@link UnitValue}'s value and units
+   * as consecutive items in an array.
+   *
+   * This matches the behaviour of {@link external:parse-unit}
+   *
+   * @returns {Array} An array with 2 elements: the value and units of the {@link UnitValue}.
+   *
+   * @example <caption>The {@link external:parse-unit} example using {@link UnitValue}</caption>
+   * // prints [50, "gold"]
+   * console.log(UnitValue.parseString("50gold").toArray());
+   */
   toArray() {
     return [this.value.toString(), this.units];
   }
