@@ -1,5 +1,5 @@
 {
-  "name": "unitvalue",
+  "name": "unit-value",
   "version": "1.0.0",
   "description":
     "A javascript library for easing working with numeric values that have units associated with them.",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/beforan/unitvalue.git"
+    "url": "git+https://github.com/beforan/unit-value.git"
   },
   "author": "beforan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/beforan/unitvalue/issues"
+    "url": "https://github.com/beforan/unit-value/issues"
   },
-  "homepage": "https://github.com/beforan/unitvalue#readme",
+  "homepage": "https://github.com/beforan/unit-value#readme",
   "devDependencies": {
     "babel-eslint": "^8.2.2",
     "eslint": "^4.19.1",
