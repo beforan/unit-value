@@ -1,6 +1,1 @@
-/**
- * Blah blah
- *
- * @namespace UnitValue
- *
- */
+export { default as UnitValue } from "./unit-value";
