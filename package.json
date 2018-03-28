@@ -6,10 +6,12 @@
   "main": "index.js",
   "scripts": {
     "precommit": "pretty-quick --staged",
+    "clean:docs": "rimraf docs && mkdir docs",
     "clean:lib": "rimraf lib && mkdir lib",
     "clean:dist": "rimraf dist && mkdir dist",
     "clean": "npm run clean:lib && npm run clean:dist",
     "lint": "eslint ./src",
+    "predocs": "npm run clean:docs",
     "docs": "jsdoc -c .jsdoc.json -R README.md",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
