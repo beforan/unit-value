@@ -48,11 +48,22 @@
 
     <section class="readme">
         <article><h1>unit-value</h1><p>A javascript library for easing working with numeric values that have units associated with them.</p>
-<h1>Getting Started</h1><h2>Build</h2><p><code>npm run lib</code> will run the source through Babel, producing a lib directory which can be consumed in a node.js environment (this is what the npm package is).</p>
-<h2>Documentation</h2><p>The code is documented with jsdoc comments.</p>
+<h1>Getting Started</h1><h2>Use in node (or with browserify / webpack etc)</h2><ul>
+<li><code>npm install unit-value</code></li>
+<li><code>import UnitValue from 'unit-value';</code></li>
+<li><code>const uv = new UnitValue(10, &quot;px&quot;);</code></li>
+</ul>
+<h2>Use in the browser</h2><p>Currently there's no standalone build for browser use.</p>
+<p>This will probably be added in future, but there may be some namespacing changes to make for that.
+Also I feel the library is significantly more useful inside modules than in the browser.</p>
+<h1>Build</h1><p><code>npm run lib</code> will run the source through Babel, producing a lib directory which can be consumed in a node.js environment (this is what the npm package is).</p>
+<h1>Documentation</h1><p>The code is documented with jsdoc comments.</p>
 <p>The documentation for the latest stable code (<code>master</code> branch) is available online at <a href="https://beforan.github.io/unit-value/">https://beforan.github.io/unit-value/</a>.</p>
 <p>The documentation relevant to the commit you are looking at should always be present inside <code>/docs</code>, but you can always build the current docs for the code you're looking at by running <code>npm run docs</code>.</p>
-<h3>A note on pre-commit hooks</h3><p>Documentation is kept accurate and up-to-date through the use of a precommit hook. When you commit to git, the docs are automagically built and staged. Bear this in mind if commits appear to be taking longer than usual. If you encounter issues committing, ensure that all npm dev dependencies have been installed with <code>npm install</code>, and that you have <code>git</code> available in your <code>PATH</code>.</p></article>
+<h3>A note on pre-commit hooks</h3><p>Documentation is kept accurate and up-to-date through the use of a precommit hook. When you commit to git, the docs are automagically built and staged. Bear this in mind if commits appear to be taking longer than usual. If you encounter issues committing, ensure that all npm dev dependencies have been installed with <code>npm install</code>, and that you have <code>git</code> available in your <code>PATH</code>.</p>
+<h1>Contributing</h1><p>Contributions are welcome. Just raise a PR.</p>
+<p>PR's are more likely to be considered in response to issues.</p>
+<p>The repo (and npm scripts) uses <code>eslint</code> and <code>prettier</code>, as well as providing a basic <code>editorconfig</code>, so it's pretty hard to not follow a consistent style (since prettier formats on commit).</p></article>
     </section>
 
 
@@ -65,7 +76,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated at Wed Mar 28 2018 21:35:17 GMT+0100 (GMT Summer Time)
+    Documentation generated at Wed Mar 28 2018 21:47:45 GMT+0100 (GMT Summer Time)
 </footer>
 
 <script>prettyPrint();</script>
