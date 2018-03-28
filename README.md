@@ -4,6 +4,10 @@ A javascript library for easing working with numeric values that have units asso
 
 # Getting Started
 
+## Build
+
+`npm run lib` will run the source through Babel, producing a lib directory which can be consumed in a node.js environment (this is what the npm package is).
+
 ## Documentation
 
 The code is documented with jsdoc comments.
