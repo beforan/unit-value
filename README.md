@@ -40,3 +40,5 @@ Contributions are welcome. Just raise a PR.
 PR's are more likely to be considered in response to issues.
 
 The repo (and npm scripts) uses `eslint` and `prettier`, as well as providing a basic `editorconfig`, so it's pretty hard to not follow a consistent style (since prettier formats on commit).
+
+Travis builds must pass on PR's, and these run eslint, so the linter will also keep code to the intended quality.
