@@ -5,7 +5,7 @@
     "A javascript library for easing working with numeric values that have units associated with them.",
   "main": "index.js",
   "scripts": {
-    "precommit": "pretty-quick --staged",
+    "precommit": "npm run docs && git add docs && pretty-quick --staged",
     "clean:docs": "rimraf docs && mkdir docs",
     "clean:lib": "rimraf lib && mkdir lib",
     "clean:dist": "rimraf dist && mkdir dist",
