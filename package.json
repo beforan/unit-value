@@ -1,0 +1,33 @@
+{
+  "name": "unitvalue",
+  "version": "1.0.0",
+  "description":
+    "A javascript library for easing working with numeric values that have units associated with them.",
+  "main": "index.js",
+  "scripts": {
+    "precommit": "pretty-quick --staged",
+    "clean:lib": "rimraf lib && mkdir lib",
+    "clean:dist": "rimraf dist && mkdir dist",
+    "clean": "npm run clean:lib && npm run clean:dist",
+    "lint": "eslint ./src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beforan/unitvalue.git"
+  },
+  "author": "beforan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beforan/unitvalue/issues"
+  },
+  "homepage": "https://github.com/beforan/unitvalue#readme",
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.19.1",
+    "husky": "^0.14.3",
+    "prettier": "^1.11.1",
+    "pretty-quick": "^1.4.1",
+    "rimraf": "^2.6.2"
+  }
+}
