@@ -1,6 +1,6 @@
 {
   "name": "unit-value",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.0",
   "description":
     "A javascript library for easing working with numeric values that have units associated with them.",
   "main": "lib/index.js",
@@ -16,7 +16,8 @@
     "lib": "babel src -d lib",
     "predocs": "npm run clean:docs",
     "docs": "jsdoc -c .jsdoc.json -R README.md",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postversion": "npm run clean && npm run lib"
   },
   "babel": {
     "presets": ["@babel/preset-env"]
