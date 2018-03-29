@@ -16,7 +16,7 @@ import * as Utils from "./utils";
  * If the values already have units and units are additionally specified,
  * the specified units will override those of the original values.
  */
-const getValuesAndUnits = (v1, v2, u) => {
+export const getValuesAndUnits = (v1, v2, u) => {
   const v = [v1, v2];
   const retry = [];
   const values = [];
