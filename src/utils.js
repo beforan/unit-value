@@ -18,6 +18,7 @@ export const numberMatch = /^(\d+\.?\d*)$/;
  * - units is required
  * - units is an arbitrary `string`
  * - units doesn't start with a number or a `.`
+ * - `<number>` and `<units>` are optionally separated by a single whitespace character
  *
  * @private
  */

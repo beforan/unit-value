@@ -175,6 +175,7 @@ export default class UnitValue {
    * - units is required
    * - units is an arbitrary `string`
    * - units doesn't start with a number or a `.`
+   * - `<number>` and `<units>` are optionally separated by a single whitespace character
    *
    * Used internally by {@link UnitValue.parse} but can be used directly with valid input.
    *
