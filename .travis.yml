@@ -5,9 +5,11 @@ install:
   - npm i
   - npm i -g codecov
 script:
-  - npm run lib && npm test:ci
+  - npm run lib
+  - npm run test:ci
+after_success:
+  - npm run coverage
   - codecov
-after_success: npm run coverage
 deploy:
   provider: npm
   email: $NPM_EMAIL
