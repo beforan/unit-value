@@ -67,4 +67,14 @@ describe("Utils", () => {
       expect(".".match(Utils.unitValueMatch)).to.be.null;
     });
   });
+
+  describe("toggle", () => {
+    it("should obey basic maths and return `1` for `2`", () => {
+      expect(Utils.toggle(1)).to.equal(2);
+    });
+
+    it("should obey basic maths and return `2` for `1`", () => {
+      expect(Utils.toggle(2)).to.equal(1);
+    });
+  });
 });
