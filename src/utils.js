@@ -21,7 +21,7 @@ export const numberMatch = /^(\d+\.?\d*)$/;
  *
  * @private
  */
-export const unitValueMatch = /^(\d+\.?\d*)([^\d\.].*)$/;
+export const unitValueMatch = /^(\d+\.?\d*)\s?([^\s\d\.].*)$/;
 
 /**
  * Used to toggle a 1 to a 2 or a 2 to a 1.
