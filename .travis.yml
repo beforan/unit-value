@@ -1,15 +1,11 @@
 language: node_js
 node_js:
   - "node"
-install:
-  - npm i
-  - npm i -g codecov
 script:
   - npm run lib
   - npm run test:ci
 after_success:
   - npm run coverage
-  - codecov
 deploy:
   provider: npm
   email: $NPM_EMAIL
