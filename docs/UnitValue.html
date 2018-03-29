@@ -635,12 +635,9 @@ the specified units will override those of the original values.</p></td>
 
     <h5>Example</h5>
     
-        <p class="code-caption">
-Add the values of two strings with different units specifying the units to use
-</p>
+        <p class="code-caption">Add the values of two strings with different units specifying the units to use</p>
     
-    <pre class="prettyprint"><code>const sum = UnitValue.add("2px", "0.5em", "rem"); // sum.toString() = "2.5rem"
-// NOTE no conversion takes place, we are just doing math with the values and then appending a unit.</code></pre>
+    <pre class="prettyprint"><code>const sum = UnitValue.add("2px", "0.5em", "rem"); // sum.toString() = "2.5rem"// NOTE no conversion takes place, we are just doing math with the values and then appending a unit.</code></pre>
 
 
 
@@ -902,12 +899,9 @@ the specified units will override those of the original values.</p></td>
 
     <h5>Example</h5>
     
-        <p class="code-caption">
-Divide a unitless number value by a <a href="UnitValue.html">UnitValue</a> and infer the units from the second value.
-</p>
+        <p class="code-caption">Divide a unitless number value by a <a href="UnitValue.html">UnitValue</a> and infer the units from the second value.</p>
     
-    <pre class="prettyprint"><code>const uv = new UnitValue(2, "px");
-const result = UnitValue.divide(10, uv); // result.toString() = "5px"</code></pre>
+    <pre class="prettyprint"><code>const uv = new UnitValue(2, "px");const result = UnitValue.divide(10, uv); // result.toString() = "5px"</code></pre>
 
 
 
@@ -1169,9 +1163,7 @@ the specified units will override those of the original values.</p></td>
 
     <h5>Example</h5>
     
-        <p class="code-caption">
-Multiply a unitless number value with a unitless string value and specify the units for the output.
-</p>
+        <p class="code-caption">Multiply a unitless number value with a unitless string value and specify the units for the output.</p>
     
     <pre class="prettyprint"><code>const result = UnitValue.multiply(10, "5", "ml"); // result.toString() = "50ml"</code></pre>
 
@@ -1391,23 +1383,15 @@ the specified units will override those of the original value.</p></td>
     
         <p class="code-caption">Parsing a combined string to a UnitValue</p>
     
-    <pre class="prettyprint"><code>const uv = UnitValue.parse("10px");
-// uv = { value: 10, units: "px" }
-// uv.toString() = "10px"</code></pre>
+    <pre class="prettyprint"><code>const uv = UnitValue.parse("10px");// uv = { value: 10, units: "px" }// uv.toString() = "10px"</code></pre>
 
         <p class="code-caption">Parsing a number value to a UnitValue with specified units</p>
     
-    <pre class="prettyprint"><code>const uv = UnitValue.parse(1.6, "em");
-// uv = { value: 1.6, units: "em" }
-// uv.toString() = "1.6em"</code></pre>
+    <pre class="prettyprint"><code>const uv = UnitValue.parse(1.6, "em");// uv = { value: 1.6, units: "em" }// uv.toString() = "1.6em"</code></pre>
 
         <p class="code-caption">Parsing an existing UnitValue and overriding the units</p>
     
-    <pre class="prettyprint"><code>// This is probably an uncommon usage,
-// but is valid as a side effect of how <a href="UnitValue.html#.parse">UnitValue.parse</a> is used internally
-const uv = UnitValue.parse(new UnitValue(10, "px"), "%");
-// uv = { value: 10, units: "%" }
-// uv.toString() = "10%"</code></pre>
+    <pre class="prettyprint"><code>// This is probably an uncommon usage,// but is valid as a side effect of how <a href="UnitValue.html#.parse">UnitValue.parse</a> is used internallyconst uv = UnitValue.parse(new UnitValue(10, "px"), "%");// uv = { value: 10, units: "%" }// uv.toString() = "10%"</code></pre>
 
 
 
@@ -1577,9 +1561,7 @@ where:</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const uv = UnitValue.parseString("10px");
-// uv = { value: 10, units: "px" }
-// uv.toString() = "10px"</code></pre>
+    <pre class="prettyprint"><code>const uv = UnitValue.parseString("10px");// uv = { value: 10, units: "px" }// uv.toString() = "10px"</code></pre>
 
 
 
@@ -1841,12 +1823,9 @@ the specified units will override those of the original values.</p></td>
 
     <h5>Example</h5>
     
-        <p class="code-caption">
-Find the difference between a string and a <a href="UnitValue.html">UnitValue</a> with matching units
-</p>
+        <p class="code-caption">Find the difference between a string and a <a href="UnitValue.html">UnitValue</a> with matching units</p>
     
-    <pre class="prettyprint"><code>const uv = new UnitValue(2, "px");
-const diff = UnitValue.subtract("10px", uv); // diff.toString() = "8px"</code></pre>
+    <pre class="prettyprint"><code>const uv = new UnitValue(2, "px");const diff = UnitValue.subtract("10px", uv); // diff.toString() = "8px"</code></pre>
 
 
 
@@ -2061,14 +2040,9 @@ returning a new <a href="UnitValue.html">UnitValue</a>.</p>
 
     <h5>Example</h5>
     
-        <p class="code-caption">
-Add the values of two <a href="UnitValue.html">UnitValue</a>s with different units specifying the units to use
-</p>
+        <p class="code-caption">Add the values of two <a href="UnitValue.html">UnitValue</a>s with different units specifying the units to use</p>
     
-    <pre class="prettyprint"><code>const uv1 = new UnitValue(2, "px");
-const uv2 = new UnitValue(0.5, "em");
-const sum = uv1.add(uv2, "rem"); // sum.toString() = "2.5rem"
-// NOTE no conversion takes place, we are just doing math with the values and then appending a unit.</code></pre>
+    <pre class="prettyprint"><code>const uv1 = new UnitValue(2, "px");const uv2 = new UnitValue(0.5, "em");const sum = uv1.add(uv2, "rem"); // sum.toString() = "2.5rem"// NOTE no conversion takes place, we are just doing math with the values and then appending a unit.</code></pre>
 
 
 
@@ -2285,8 +2259,7 @@ returning a new <a href="UnitValue.html">UnitValue</a>.</p>
     
         <p class="code-caption">Converting milliseconds to seconds with overriding units and a unitless divisor</p>
     
-    <pre class="prettyprint"><code>const ms = new UnitValue(1000, "ms");
-const s = ms.divide(1000, "s");</code></pre>
+    <pre class="prettyprint"><code>const ms = new UnitValue(1000, "ms");const s = ms.divide(1000, "s");</code></pre>
 
 
 
@@ -2503,8 +2476,7 @@ returning a new <a href="UnitValue.html">UnitValue</a>.</p>
     
         <p class="code-caption">Converting seconds to milliseconds with overriding units and a unitless multiplier</p>
     
-    <pre class="prettyprint"><code>const s = new UnitValue(1, "s");
-const ms = s.multiply(1000, "ms");</code></pre>
+    <pre class="prettyprint"><code>const s = new UnitValue(1, "s");const ms = s.multiply(1000, "ms");</code></pre>
 
 
 
@@ -2721,9 +2693,7 @@ returning a new <a href="UnitValue.html">UnitValue</a>.</p>
     
         <p class="code-caption">Find the difference between two <a href="UnitValue.html">UnitValue</a>s with matching units</p>
     
-    <pre class="prettyprint"><code>const uv1 = new UnitValue(10, "px");
-const uv2 = new UnitValue(2, "px");
-const diff = uv1.subtract(uv2); // diff.toString() = "8px"</code></pre>
+    <pre class="prettyprint"><code>const uv1 = new UnitValue(10, "px");const uv2 = new UnitValue(2, "px");const diff = uv1.subtract(uv2); // diff.toString() = "8px"</code></pre>
 
 
 
@@ -2836,8 +2806,7 @@ as consecutive items in an array.</p>
     
         <p class="code-caption">The <a href="external-parse-unit.html">external:parse-unit</a> example using <a href="UnitValue.html">UnitValue</a></p>
     
-    <pre class="prettyprint"><code>// prints [50, "gold"]
-console.log(UnitValue.parseString("50gold").toArray());</code></pre>
+    <pre class="prettyprint"><code>// prints [50, "gold"]console.log(UnitValue.parseString("50gold").toArray());</code></pre>
 
 
 
@@ -2947,8 +2916,7 @@ in the format <code>&lt;number&gt;&lt;value&gt;</code></p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const uv = new UnitValue(2, "rem");
-// uv.toString() = "2rem"</code></pre>
+    <pre class="prettyprint"><code>const uv = new UnitValue(2, "rem");// uv.toString() = "2rem"</code></pre>
 
 
 
@@ -3061,13 +3029,9 @@ when inferring that the type should be a number, for example in math operations.
 
     <h5>Example</h5>
     
-        <p class="code-caption">
-<a href="UnitValue.html#valueOf">UnitValue#valueOf</a> is called by the javascript engine
-to allow the `+` operator to work normally on the object
-</p>
+        <p class="code-caption"><a href="UnitValue.html#valueOf">UnitValue#valueOf</a> is called by the javascript engineto allow the `+` operator to work normally on the object</p>
     
-    <pre class="prettyprint"><code>const uv = new UnitValue(10, "px");
-const result = uv + 5; // result = 15</code></pre>
+    <pre class="prettyprint"><code>const uv = new UnitValue(10, "px");const result = uv + 5; // result = 15</code></pre>
 
 
 
@@ -3089,7 +3053,7 @@ const result = uv + 5; // result = 15</code></pre>
 <br class="clear">
 
 <footer>
-    Documentation generated at Wed Mar 28 2018 22:39:07 GMT+0100 (GMT Summer Time)
+    Documentation generated at Thu Mar 29 2018 10:49:49 GMT+0100 (GMT Summer Time)
 </footer>
 
 <script>prettyPrint();</script>
