@@ -3,6 +3,7 @@
 [![NPM](https://nodei.co/npm/unit-value.png?compact=true)](https://nodei.co/npm/unit-value/)
 
 [![Build Status](https://travis-ci.org/beforan/unit-value.svg?branch=master)](https://travis-ci.org/beforan/unit-value)
+[![Coverage Status](https://coveralls.io/repos/github/beforan/unit-value/badge.svg?branch=master)](https://coveralls.io/github/beforan/unit-value?branch=master)
 
 A javascript library for easing working with numeric values that have units associated with them.
 

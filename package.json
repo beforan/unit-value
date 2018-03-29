@@ -17,6 +17,7 @@
     "predocs": "npm run clean:docs",
     "docs": "jsdoc -c .jsdoc.json -R README.md",
     "test": "nyc mocha --require @babel/register --reporter nyan",
+    "test:ci": "nyc mocha --require @babel/register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "postversion": "npm run lib && npm test"
   },
