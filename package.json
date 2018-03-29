@@ -12,12 +12,12 @@
     "clean:dist": "rimraf dist && mkdir dist",
     "clean": "npm run clean:lib && npm run clean:dist",
     "lint": "eslint ./src",
-    "prelib": "npm run clean:lib && npm run lint && npm test",
+    "prelib": "npm run clean:lib && npm run lint",
     "lib": "babel src -d lib",
     "predocs": "npm run clean:docs",
     "docs": "jsdoc -c .jsdoc.json -R README.md",
     "test": "mocha --require @babel/register --reporter nyan",
-    "postversion": "npm run lib"
+    "postversion": "npm run lib && npm test"
   },
   "babel": {
     "presets": ["@babel/preset-env"]
