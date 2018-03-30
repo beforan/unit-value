@@ -16,13 +16,22 @@
     "lib": "babel src -d lib",
     "predocs": "npm run clean:docs",
     "docs": "jsdoc -c .jsdoc.json -R README.md",
-    "test": "nyc mocha --require @babel/register --reporter nyan",
+    "test": "nyc --require @babel/register mocha --reporter nyan",
     "test:ci": "nyc mocha --require @babel/register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "postversion": "npm run lib && npm test"
   },
   "babel": {
-    "presets": ["@babel/preset-env"]
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": { "node": "current" }
+        }
+      ]
+    ],
+    "comments": false,
+    "sourceMaps": "inline"
   },
   "repository": {
     "type": "git",
@@ -53,6 +62,7 @@
     "postman-jsdoc-theme": "0.0.3",
     "prettier": "^1.11.1",
     "pretty-quick": "^1.4.1",
+    "remap-istanbul": "^0.11.0",
     "rimraf": "^2.6.2"
   }
 }

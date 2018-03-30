@@ -50,7 +50,7 @@ export const getValuesAndUnits = (v1, v2, u) => {
 
   // this can occur if both values contain different units and u is not specified
   if (values[0].units !== values[1].units)
-    throw new Error(
+    throw new UnitsError(
       "The units of both values do not match. Please specify units."
     );
 
@@ -222,7 +222,7 @@ export default class UnitValue {
   }
 
   // we also provide common math helpers which RETAIN UNITS (or specify them)
-  // including static versions to avoid unnecesasry manual instantiation of UnitValues
+  // including static versions to avoid unnecessary manual instantiation of UnitValues
 
   /**
    * Adds the value `v` to the value of this {@link UnitValue},
