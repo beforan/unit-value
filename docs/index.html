@@ -70,7 +70,7 @@ const periodMs = period * 1000; // the js * operator uses `valueOf()` for the Un
 setInterval(() => console.log(&quot;hello&quot;), periodMs);</code></pre><h3>Perform unit conversions, changing the units string at the same time as doing the calculation</h3><pre class="prettyprint source lang-js"><code>const length_us = &quot;5 inches&quot;;
 const length_international = UnitValue.parse(length_us) // create a UnitValue from the original value
   .multiply(2.54, &quot;cm&quot;) // apply the conversion math and change the resulting units
-  .toString(); // return a string again - &quot;2.54cm&quot;</code></pre><h1>Build</h1><p><code>npm run lib</code> will run the source through Babel, producing a lib directory which can be consumed in a node.js environment (this is what the npm package is).</p>
+  .toString(); // return a string again - &quot;12.7cm&quot;</code></pre><h1>Build</h1><p><code>npm run lib</code> will run the source through Babel, producing a lib directory which can be consumed in a node.js environment (this is what the npm package is).</p>
 <h1>Test</h1><p>The library is fully test covered by <code>mocha</code>, with <code>chai</code> expect assertions. <code>nyc</code> assesses and reports on code coverage.</p>
 <p>Tests can be run with <code>npm test</code> but the library will need to be built first.</p>
 <h1>Documentation</h1><p>The code is documented with jsdoc comments.</p>
@@ -80,7 +80,7 @@ const length_international = UnitValue.parse(length_us) // create a UnitValue fr
 <h1>Contributing</h1><p>Contributions are welcome. Just raise a PR.</p>
 <p>PR's are more likely to be considered in response to issues.</p>
 <p>The repo (and npm scripts) uses <code>eslint</code> and <code>prettier</code>, as well as providing a basic <code>editorconfig</code>, so it's pretty hard to <em>not</em> follow a consistent style (since prettier formats on commit).</p>
-<p><code>npm lint</code> will run the linter, but it's recommended to use an editor that supports eslint, and prefereably prettier too. I use <a href="https://code.visualstudio.com">Visual Studio Code</a>.</p>
+<p><code>npm run lint</code> will run the linter, but it's recommended to use an editor that supports eslint, and preferably prettier too. I use <a href="https://code.visualstudio.com">Visual Studio Code</a>.</p>
 <p>PRs should contain unit tests. Refer to the existing tests for style expectations. Preferably code coverage will be at 100% before a PR is accepted, unless there is a good reason for reduced coverage.</p>
 <p>Travis builds must pass on PR's, and these run eslint and unit tests, so the linter will also keep code to the intended quality, and tests must pass.</p></article>
     </section>
@@ -95,7 +95,7 @@ const length_international = UnitValue.parse(length_us) // create a UnitValue fr
 <br class="clear">
 
 <footer>
-    Documentation generated at Fri Mar 30 2018 22:42:37 GMT+0100 (GMT Summer Time)
+    Documentation generated at Fri Mar 30 2018 22:56:09 GMT+0100 (GMT Summer Time)
 </footer>
 
 <script>prettyPrint();</script>

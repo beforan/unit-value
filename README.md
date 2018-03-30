@@ -58,7 +58,7 @@ setInterval(() => console.log("hello"), periodMs);
 const length_us = "5 inches";
 const length_international = UnitValue.parse(length_us) // create a UnitValue from the original value
   .multiply(2.54, "cm") // apply the conversion math and change the resulting units
-  .toString(); // return a string again - "2.54cm"
+  .toString(); // return a string again - "12.7cm"
 ```
 
 # Build
@@ -91,7 +91,7 @@ PR's are more likely to be considered in response to issues.
 
 The repo (and npm scripts) uses `eslint` and `prettier`, as well as providing a basic `editorconfig`, so it's pretty hard to _not_ follow a consistent style (since prettier formats on commit).
 
-`npm lint` will run the linter, but it's recommended to use an editor that supports eslint, and prefereably prettier too. I use [Visual Studio Code](https://code.visualstudio.com).
+`npm run lint` will run the linter, but it's recommended to use an editor that supports eslint, and preferably prettier too. I use [Visual Studio Code](https://code.visualstudio.com).
 
 PRs should contain unit tests. Refer to the existing tests for style expectations. Preferably code coverage will be at 100% before a PR is accepted, unless there is a good reason for reduced coverage.
 
