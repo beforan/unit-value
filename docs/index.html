@@ -60,19 +60,17 @@ console.log(uv.add(25).toString()); // prints &quot;35px&quot;</code></pre><p>Th
 Also I feel the library is significantly more useful inside modules than in the browser.</p>
 <h2>Examples</h2><p>The API Reference Docs give a good sense of what is possible with the library, but here are some examples</p>
 <h3>Perform math on CSS values without separating the units and adding them back after</h3><pre class="prettyprint source lang-js"><code>element1.style.width = &quot;100px&quot;;
-element2.style.width = UnitValue
-    .parse(element1.style.width) // turn the existing css value string into a UnitValue
-    .subtract(30) // make it slightly smaller
-    .toString(); // returns &quot;70px&quot;</code></pre><h3>Perform math using regular javascript operators, while using the friendly string for UI display</h3><pre class="prettyprint source lang-js"><code>const period = new UnitValue(10, &quot;s&quot;); // amount of time in seconds
-myUI.timePeriod = period.toString() // &quot;10s&quot;
+element2.style.width = UnitValue.parse(element1.style.width) // turn the existing css value string into a UnitValue
+  .subtract(30) // make it slightly smaller
+  .toString(); // returns &quot;70px&quot;</code></pre><h3>Perform math using regular javascript operators, while using the friendly string for UI display</h3><pre class="prettyprint source lang-js"><code>const period = new UnitValue(10, &quot;s&quot;); // amount of time in seconds
+myUI.timePeriod = period.toString(); // &quot;10s&quot;
 
 // convert to milliseconds to have a repeating action every 10s
 const periodMs = period * 1000; // the js * operator uses `valueOf()` for the UnitValue object, and works normally
 setInterval(() => console.log(&quot;hello&quot;), periodMs);</code></pre><h3>Perform unit conversions, changing the units string at the same time as doing the calculation</h3><pre class="prettyprint source lang-js"><code>const length_us = &quot;5 inches&quot;;
-const length_international = UnitValue
-    .parse(length_us) // create a UnitValue from the original value
-    .multiply(2.54, &quot;cm&quot;) // apply the conversion math and change the resulting units
-    .toString(); // return a string again - &quot;2.54cm&quot;</code></pre><h1>Build</h1><p><code>npm run lib</code> will run the source through Babel, producing a lib directory which can be consumed in a node.js environment (this is what the npm package is).</p>
+const length_international = UnitValue.parse(length_us) // create a UnitValue from the original value
+  .multiply(2.54, &quot;cm&quot;) // apply the conversion math and change the resulting units
+  .toString(); // return a string again - &quot;2.54cm&quot;</code></pre><h1>Build</h1><p><code>npm run lib</code> will run the source through Babel, producing a lib directory which can be consumed in a node.js environment (this is what the npm package is).</p>
 <h1>Test</h1><p>The library is fully test covered by <code>mocha</code>, with <code>chai</code> expect assertions. <code>nyc</code> assesses and reports on code coverage.</p>
 <p>Tests can be run with <code>npm test</code> but the library will need to be built first.</p>
 <h1>Documentation</h1><p>The code is documented with jsdoc comments.</p>
@@ -97,7 +95,7 @@ const length_international = UnitValue
 <br class="clear">
 
 <footer>
-    Documentation generated at Fri Mar 30 2018 22:41:43 GMT+0100 (GMT Summer Time)
+    Documentation generated at Fri Mar 30 2018 22:42:37 GMT+0100 (GMT Summer Time)
 </footer>
 
 <script>prettyPrint();</script>
