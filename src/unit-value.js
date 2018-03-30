@@ -32,20 +32,20 @@ export const getValuesAndUnits = (v1, v2, u) => {
     }
   }
 
-  // if only one value failed due to missing units,
-  // we can use the units from the other one!
-  // otherwise we need to throw
-  switch (retry.length) {
-    case 0:
-      break;
-    case 1:
-      const [i] = retry;
-      values[i] = UnitValue.parse(v[i], values[Utils.toggle(i)].units);
-      break;
-    default:
+  if (retry.length) {
+    // no need to retry if there aren't any errors
+    if (retry.length > 1)
+      // throw if there's more than one error
       throw new UnitsError(
         "At least one value should contain units, or separate units must be specified."
       );
+
+    // if only one value failed due to missing units,
+    // we can use the units from the other one!
+    values[retry[0]] = UnitValue.parse(
+      v[retry[0]],
+      values[Utils.toggle(retry[0])].units
+    );
   }
 
   // this can occur if both values contain different units and u is not specified
