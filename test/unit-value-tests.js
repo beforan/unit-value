@@ -1,5 +1,6 @@
 import { expect } from "chai";
-import UnitValue, { getValuesAndUnits } from "../lib/unit-value";
+import { getValuesAndUnits } from "../lib/unit-value";
+import UnitValue from "../lib";
 import UnitsError from "../lib/units-error";
 
 describe("getValuesAndUnits", () => {

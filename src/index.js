@@ -1,1 +1,3 @@
-export { default as UnitValue } from "./unit-value";
+import { default as UnitValue } from "./unit-value";
+
+export default UnitValue;
