@@ -97,4 +97,52 @@ describe("UnitValue", () => {
   });
 
   describe("parse", () => {});
+
+  describe("add() (static)", () => {
+    // TODO more cases?
+    [{ v1: 1, v2: 2, units: "px", output: "3px" }].forEach(
+      ({ v1, v2, units, output }) =>
+        it("should return a UnitValue for the sum of two values with explicit or implicit units", () => {
+          const result = UnitValue.add(v1, v2, units);
+          expect(result.toString()).to.equal(output);
+          expect(result instanceof UnitValue).to.be.true;
+        })
+    );
+  });
+
+  describe("subtract() (static)", () => {
+    // TODO more cases?
+    [{ v1: 5, v2: 2, units: "px", output: "3px" }].forEach(
+      ({ v1, v2, units, output }) =>
+        it("should return a UnitValue for the difference between two values with explicit or implicit units", () => {
+          const result = UnitValue.subtract(v1, v2, units);
+          expect(result.toString()).to.equal(output);
+          expect(result instanceof UnitValue).to.be.true;
+        })
+    );
+  });
+
+  describe("multiply() (static)", () => {
+    // TODO more cases?
+    [{ v1: 1.5, v2: 2, units: "px", output: "3px" }].forEach(
+      ({ v1, v2, units, output }) =>
+        it("should return a UnitValue for two values multiplied together with explicit or implicit units", () => {
+          const result = UnitValue.multiply(v1, v2, units);
+          expect(result.toString()).to.equal(output);
+          expect(result instanceof UnitValue).to.be.true;
+        })
+    );
+  });
+
+  describe("divide() (static)", () => {
+    // TODO more cases?
+    [{ v1: 6, v2: 2, units: "px", output: "3px" }].forEach(
+      ({ v1, v2, units, output }) =>
+        it("should return a UnitValue for v1 divided by v2 with explicit or implicit units", () => {
+          const result = UnitValue.divide(v1, v2, units);
+          expect(result.toString()).to.equal(output);
+          expect(result instanceof UnitValue).to.be.true;
+        })
+    );
+  });
 });
