@@ -27,17 +27,6 @@ describe("getValuesAndUnits", () => {
       expect(() => getValuesAndUnits(v1, v2)).to.throw(UnitsError);
     })
   );
-
-  [
-    ["2px", "10em"],
-    [new UnitValue(2, "px"), new UnitValue(10, "em")],
-    ["2px", new UnitValue(10, "em")],
-    [new UnitValue(2, "px"), "10em"]
-  ].forEach(([v1, v2]) =>
-    it("should throw UnitsError if values have non-matching units and no explicit units given", () => {
-      expect(() => getValuesAndUnits(v1, v2)).to.throw(UnitsError);
-    })
-  );
 });
 
 describe("UnitValue", () => {
@@ -150,6 +139,10 @@ describe("UnitValue", () => {
 
     it("should throw a TypeError if passed an object type other than Number, String or UnitValue", () => {
       expect(() => UnitValue.parse(new Date())).to.throw(TypeError);
+    });
+
+    it("should throw a TypeError if passed a type other than number, string or object", () => {
+      expect(() => UnitValue.parse(undefined)).to.throw(TypeError);
     });
   });
 
