@@ -9,6 +9,23 @@ describe("getValuesAndUnits", () => {
     })
   );
 
+  [["a", 2], ["b", "5"], [6, "c"], [8, "d"]].forEach(([v1, v2]) =>
+    it("should rethrow TypeErrors", () => {
+      expect(() => getValuesAndUnits(v1, v2)).to.throw(TypeError);
+    })
+  );
+
+  [
+    ["2px", "10em"],
+    [new UnitValue(2, "px"), new UnitValue(10, "em")],
+    ["2px", new UnitValue(10, "em")],
+    [new UnitValue(2, "px"), "10em"]
+  ].forEach(([v1, v2]) =>
+    it("should throw UnitsError if values have non-matching units and no explicit units given", () => {
+      expect(() => getValuesAndUnits(v1, v2)).to.throw(UnitsError);
+    })
+  );
+
   [
     ["2px", "10em"],
     [new UnitValue(2, "px"), new UnitValue(10, "em")],
