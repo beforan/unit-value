@@ -434,6 +434,6 @@ export default class UnitValue {
    * console.log(UnitValue.parseString("50gold").toArray());
    */
   toArray() {
-    return [this.value.toString(), this.units];
+    return [this.value, this.units];
   }
 }

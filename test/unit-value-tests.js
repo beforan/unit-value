@@ -39,7 +39,27 @@ describe("getValuesAndUnits", () => {
 });
 
 describe("UnitValue", () => {
-  describe("parseString", () => {
+  ["2", "abc", true, null, undefined, new Number(1)].forEach(input =>
+    it("should throw a TypeError if value is not a number", () => {
+      expect(() => new UnitValue(input, "px")).to.throw(TypeError);
+    })
+  );
+
+  describe("toString()", () => {
+    it("should return a string in the form <value><units>", () => {
+      expect(new UnitValue(2, "px").toString()).to.equal("2px");
+    });
+  });
+
+  describe("toArray()", () => {
+    it("should return an array in the form [ value, units ]", () => {
+      expect(new UnitValue(2, "px").toArray().toString()).to.equal(
+        [2, "px"].toString()
+      );
+    });
+  });
+
+  describe("parseString()", () => {
     [
       "abc",
       "%$£@&*(^()",
