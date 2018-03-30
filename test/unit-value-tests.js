@@ -126,6 +126,31 @@ describe("UnitValue", () => {
         expect(result instanceof UnitValue).to.be.true;
       })
     );
+
+    ["1px", "2.3em", new String("4%"), new String("5.6cm")].forEach(input =>
+      it("should return a UnitValue with correct values when parsing a string or String with implicit units", () => {
+        const result = UnitValue.parse(input);
+        expect(result.toString()).to.equal(input.toString());
+        expect(result instanceof UnitValue).to.be.true;
+      })
+    );
+
+    [
+      ["1px", "em", "1em"],
+      ["2.3em", "px", "2.3px"],
+      [new String("4%"), "yalms", "4yalms"],
+      [new String("5.6cm"), "ilms", "5.6ilms"]
+    ].forEach(([value, units, output]) =>
+      it("should return a UnitValue with correct values when parsing a string or String with implicit and explicit units", () => {
+        const result = UnitValue.parse(value, units);
+        expect(result.toString()).to.equal(output);
+        expect(result instanceof UnitValue).to.be.true;
+      })
+    );
+
+    it("should throw a TypeError if passed an object type other than Number, String or UnitValue", () => {
+      expect(() => UnitValue.parse(new Date())).to.throw(TypeError);
+    });
   });
 
   describe("add() (static)", () => {
