@@ -19,6 +19,7 @@
     "test": "nyc --require @babel/register mocha --reporter nyan",
     "test:ci": "nyc mocha --require @babel/register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "sample": "node ./samples/node/sample.js",
     "postversion": "npm run lib && npm test"
   },
   "babel": {

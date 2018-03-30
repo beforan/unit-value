@@ -17,12 +17,12 @@ import * as Utils from "./utils";
  * the specified units will override those of the original values.
  */
 export const getValuesAndUnits = (v1, v2, u) => {
-  const v = [v1, v2];
+  const v = [0, v1, v2];
   const retry = [];
   const values = [];
 
   // try and get UnitValues for each value
-  for (let i = 0; i < v.length; i++) {
+  for (let i = 1; i < v.length; i++) {
     try {
       values[i] = UnitValue.parse(v[i], u);
     } catch (e) {
@@ -49,15 +49,15 @@ export const getValuesAndUnits = (v1, v2, u) => {
   }
 
   // this can occur if both values contain different units and u is not specified
-  if (values[0].units !== values[1].units)
+  if (values[1].units !== values[2].units)
     throw new UnitsError(
       "The units of both values do not match. Please specify units."
     );
 
   return {
-    value1: values[0].value,
-    value2: values[1].value,
-    units: values[0].units
+    value1: values[1].value,
+    value2: values[2].value,
+    units: values[1].units
   };
 };
 
