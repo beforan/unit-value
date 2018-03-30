@@ -22,16 +22,7 @@
     "postversion": "npm run lib && npm test"
   },
   "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ]
-    ],
+    "presets": [["@babel/preset-env"]],
     "comments": false,
     "sourceMaps": "inline"
   },
