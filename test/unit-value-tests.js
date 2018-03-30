@@ -60,6 +60,12 @@ describe("UnitValue", () => {
   });
 
   describe("parseString()", () => {
+    [2, 3.4, true, null, undefined, new String("1")].forEach(input =>
+      it("should throw a TypeError if s is not a string", () => {
+        expect(() => UnitValue.parseString(input)).to.throw(TypeError);
+      })
+    );
+
     [
       "abc",
       "%$£@&*(^()",
