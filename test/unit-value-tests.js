@@ -3,6 +3,8 @@ import UnitValue, { getValuesAndUnits } from "../lib/unit-value";
 import UnitsError from "../lib/units-error";
 
 describe("getValuesAndUnits", () => {
+  // TODO positive tests? theoretically the math helpers cover that
+
   [[1, 2], ["4", "5"], [6, "7"], ["8", 9]].forEach(([v1, v2]) =>
     it("should throw UnitsError if no units are specified", () => {
       expect(() => getValuesAndUnits(v1, v2)).to.throw(UnitsError);
@@ -96,7 +98,35 @@ describe("UnitValue", () => {
     );
   });
 
-  describe("parse", () => {});
+  describe("parse", () => {
+    it("should return an semantically identical UnitValue when parsing a UnitValue without explicit units", () => {
+      const result = UnitValue.parse(new UnitValue(2, "px"));
+      expect(result.toString()).to.equal("2px");
+      expect(result instanceof UnitValue).to.be.true;
+    });
+
+    it("should return a UnitValue with correct values when parsing a UnitValue with explicit units", () => {
+      const result = UnitValue.parse(new UnitValue(2, "px"), "em");
+      expect(result.toString()).to.equal("2em");
+      expect(result instanceof UnitValue).to.be.true;
+    });
+
+    [1, 2.3, new Number(4), new Number(5.6)].forEach(input =>
+      it("should return a UnitValue with correct values when parsing a number or Number with explicit units", () => {
+        const result = UnitValue.parse(input, "em");
+        expect(result.toString()).to.equal(`${input.toString()}em`);
+        expect(result instanceof UnitValue).to.be.true;
+      })
+    );
+
+    ["1", "2.3", new String("4"), new String("5.6")].forEach(input =>
+      it("should return a UnitValue with correct values when parsing a unitless string or String with explicit units", () => {
+        const result = UnitValue.parse(input, "em");
+        expect(result.toString()).to.equal(`${input}em`);
+        expect(result instanceof UnitValue).to.be.true;
+      })
+    );
+  });
 
   describe("add() (static)", () => {
     // TODO more cases?
