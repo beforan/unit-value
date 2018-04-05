@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "files": ["lib/", "LICENSE", "package.json", "README.md"],
   "scripts": {
-    "precommit": "npm run docs && git add docs && pretty-quick --staged",
+    "precommit": "pretty-quick --staged",
     "clean:docs": "rimraf docs && mkdir docs",
     "clean:lib": "rimraf lib && mkdir lib",
     "clean:dist": "rimraf dist && mkdir dist",
