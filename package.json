@@ -20,7 +20,7 @@
     "test:ci": "nyc mocha --require @babel/register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "sample": "node ./samples/node/sample.js",
-    "postversion": "npm run lib && npm test"
+    "postversion": "npm run docs && npm run lib && npm test"
   },
   "babel": {
     "presets": [["@babel/preset-env"]],
