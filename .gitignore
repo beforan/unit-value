@@ -1,4 +1,5 @@
 # build artifacts
+docs
 dist
 lib
 
