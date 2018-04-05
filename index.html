@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Home - Postman Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="UnitValue.html">UnitValue</a><ul class='methods'><li data-type='method'><a href="UnitValue.html#.add">add</a></li><li data-type='method'><a href="UnitValue.html#.divide">divide</a></li><li data-type='method'><a href="UnitValue.html#.multiply">multiply</a></li><li data-type='method'><a href="UnitValue.html#.parse">parse</a></li><li data-type='method'><a href="UnitValue.html#.parseString">parseString</a></li><li data-type='method'><a href="UnitValue.html#.subtract">subtract</a></li><li data-type='method'><a href="UnitValue.html#add">add</a></li><li data-type='method'><a href="UnitValue.html#divide">divide</a></li><li data-type='method'><a href="UnitValue.html#multiply">multiply</a></li><li data-type='method'><a href="UnitValue.html#subtract">subtract</a></li><li data-type='method'><a href="UnitValue.html#toArray">toArray</a></li><li data-type='method'><a href="UnitValue.html#toString">toString</a></li><li data-type='method'><a href="UnitValue.html#valueOf">valueOf</a></li></ul></li></ul><h3>Externals</h3><ul><li><a href="external-parse-unit.html">parse-unit</a></li></ul>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h1>unit-value</h1><p><a href="https://nodei.co/npm/unit-value/"><img src="https://nodei.co/npm/unit-value.png?compact=true" alt="NPM"></a></p>
+<p><a href="https://travis-ci.org/beforan/unit-value"><img src="https://travis-ci.org/beforan/unit-value.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/github/beforan/unit-value?branch=master"><img src="https://coveralls.io/repos/github/beforan/unit-value/badge.svg?branch=master" alt="Coverage Status"></a></p>
+<p>A javascript library for easing working with numeric values that have units associated with them.</p>
+<h1>Getting Started</h1><h2>Use in node (or with browserify / webpack etc)</h2><p><code>npm install unit-value</code></p>
+<pre class="prettyprint source lang-js"><code>const UnitValue = require(&quot;unit-value&quot;);
+const uv = new UnitValue(10, &quot;px&quot;);
+console.log(uv.add(25).toString()); // prints &quot;35px&quot;</code></pre><p>There is a small sample node script that can be run with <code>npm run sample</code>.</p>
+<h2>Use in the browser</h2><p>Currently there's no standalone build for browser use.</p>
+<p>This will probably be added in future, but there may be some namespacing changes to make for that.
+Also I feel the library is significantly more useful inside modules than in the browser.</p>
+<h2>Examples</h2><p>The API Reference Docs give a good sense of what is possible with the library, but here are some examples</p>
+<h3>Perform math on CSS values without separating the units and adding them back after</h3><pre class="prettyprint source lang-js"><code>element1.style.width = &quot;100px&quot;;
+element2.style.width = UnitValue.parse(element1.style.width) // turn the existing css value string into a UnitValue
+  .subtract(30) // make it slightly smaller
+  .toString(); // returns &quot;70px&quot;</code></pre><h3>Perform math using regular javascript operators, while using the friendly string for UI display</h3><pre class="prettyprint source lang-js"><code>const period = new UnitValue(10, &quot;s&quot;); // amount of time in seconds
+myUI.timePeriod = period.toString(); // &quot;10s&quot;
+
+// convert to milliseconds to have a repeating action every 10s
+const periodMs = period * 1000; // the js * operator uses `valueOf()` for the UnitValue object, and works normally
+setInterval(() => console.log(&quot;hello&quot;), periodMs);</code></pre><h3>Perform unit conversions, changing the units string at the same time as doing the calculation</h3><pre class="prettyprint source lang-js"><code>const length_us = &quot;5 inches&quot;;
+const length_international = UnitValue.parse(length_us) // create a UnitValue from the original value
+  .multiply(2.54, &quot;cm&quot;) // apply the conversion math and change the resulting units
+  .toString(); // return a string again - &quot;12.7cm&quot;</code></pre><h1>Build</h1><p><code>npm run lib</code> will run the source through Babel, producing a lib directory which can be consumed in a node.js environment (this is what the npm package is).</p>
+<h1>Test</h1><p>The library is fully test covered by <code>mocha</code>, with <code>chai</code> expect assertions. <code>nyc</code> assesses and reports on code coverage.</p>
+<p>Tests can be run with <code>npm test</code> but the library will need to be built first.</p>
+<h1>Documentation</h1><p>The code is documented with jsdoc comments.</p>
+<p>The documentation for the latest stable code (<code>master</code> branch) is always available online at <a href="https://beforan.github.io/unit-value/">https://beforan.github.io/unit-value/</a>.</p>
+<p>The documentation relevant to the commit you are looking at can always be built by running <code>npm run docs</code>.</p>
+<h1>Contributing</h1><p>Contributions are welcome. Just raise a PR.</p>
+<p>PR's are more likely to be considered in response to issues.</p>
+<p>The repo (and npm scripts) uses <code>eslint</code> and <code>prettier</code>, as well as providing a basic <code>editorconfig</code>, so it's pretty hard to <em>not</em> follow a consistent style (since prettier formats on commit).</p>
+<p><code>npm run lint</code> will run the linter, but it's recommended to use an editor that supports eslint, and preferably prettier too. I use <a href="https://code.visualstudio.com">Visual Studio Code</a>.</p>
+<p>PRs should contain unit tests. Refer to the existing tests for style expectations. Preferably code coverage will be at 100% before a PR is accepted, unless there is a good reason for reduced coverage.</p>
+<p>Travis builds must pass on PR's, and these run eslint and unit tests, so the linter will also keep code to the intended quality, and tests must pass.</p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated at Thu Apr 05 2018 14:43:34 GMT+0000 (UTC)
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
